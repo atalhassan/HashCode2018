@@ -8,9 +8,17 @@
 //    3. Solve the ProblemSet
 //    4. Write the solution in file
 
-
+// io libraries
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+// util libraries
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -28,6 +36,23 @@ public class Main {
     // System.out.println("There should be at least " + () + " slices");
 
     // Start finding slices
+    writeFile("example.out");
+  }
+
+  public static void writeFile(String filename) {
+    try {
+           //Whatever the file path is.
+           File outFile = new File(filename);
+           FileWriter fl = new FileWriter(outFile);
+           BufferedWriter bf = new BufferedWriter(fl);
+           PrintWriter output = new PrintWriter(bf);
+           output.println("Hello");
+           output.println("Hello");
+           output.println("Hello");
+           output.close();
+       } catch (IOException e) {
+           System.err.println("Problem writing to the file statsTest.txt");
+       }
   }
 
   // Read the problem from a file then represent it with a class
