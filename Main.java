@@ -27,28 +27,30 @@ public class Main {
   public static void main(String[] args) {
     String filename = args[0];
     ProblemSet ps = readFile(filename);
+    Solution s = new Solution(ps.getParam(), ps.getRides());
 
     System.out.println(ps.getParam()) ;
-    ArrayList<ArrayList<Character>> pizza = ps.getPizza();
-    for (ArrayList<Character> row : pizza){
+    ArrayList<ArrayList<Integer>> rides = ps.getRides();
+    for (ArrayList<Integer> row : rides){
         System.out.println(row);
     }
     // System.out.println("There should be at least " + () + " slices");
 
     // Start finding slices
-    writeFile("example.out");
+    // writeFile("example.out");
   }
 
-  public static void writeFile(String filename) {
+  public static void writeFile(String filename, ArrayLists<ArrayLists<Ride>> rides) {
+
     try {
            //Whatever the file path is.
            File outFile = new File(filename);
            FileWriter fl = new FileWriter(outFile);
            BufferedWriter bf = new BufferedWriter(fl);
            PrintWriter output = new PrintWriter(bf);
-           output.println("Hello");
-           output.println("Hello");
-           output.println("Hello");
+           for(int row = 0; row < rides.size(); row++){
+             output.println(row + ' ' + rides.get(row));
+           }
            output.close();
        } catch (IOException e) {
            System.err.println("Problem writing to the file statsTest.txt");
@@ -60,41 +62,35 @@ public class Main {
     // Initiate inputs
     File inFile = new File(filename);
     ArrayList<Integer> parameters = new ArrayList<Integer>();
-    ArrayList<ArrayList<Character>> pizza = new ArrayList<ArrayList<Character>>();
+    ArrayList<ArrayList<Integer>> rides = new ArrayList<ArrayList<Integer>>();
 
     int numT = 0;
     int numM = 0;
 
     try {
       Scanner sc = new Scanner(inFile);
-      int i = 0;
       // Read the Integer part (R, C, L, H)
-      while(sc.hasNextInt()) {
+      for(int i = 0; i < 6; i++) {
         parameters.add(sc.nextInt());
       }
       sc.nextLine();
-
-      // Read the char part (pizza)
+      // Read the int part (pizza)
       while(sc.hasNextLine()) {
-        String line = sc.nextLine();
-        ArrayList<Character> row = new ArrayList<Character>();
-        for(i = 0; i < line.length(); i++) {
-          if (line.charAt(i) == 'T') {
-            numT += 1;
-          } else if (line.charAt(i) == 'M') {
-            numM += 1;
-          }
-          row.add(line.charAt(i));
+
+
+        ArrayList<Integer> rowList = new ArrayList<Integer>();
+        for(int i = 0; i < 6; i++) {
+          rowList.add(sc.nextInt());
         }
-        pizza.add(row);
+        // sc.nextLine();
+        sc.nextLine();
+        rides.add(rowList);
       }
 
       sc.close();
     } catch (FileNotFoundException ex) {
       ex.printStackTrace();
     }
-    parameters.add(numT);
-    parameters.add(numM);
-    return new ProblemSet(parameters, pizza);
+    return new ProblemSet(parameters, rides);
   }
 }

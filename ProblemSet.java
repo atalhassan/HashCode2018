@@ -9,15 +9,15 @@ import java.util.ArrayList;
 
 public class ProblemSet {
   private ArrayList<Integer> parameters = new ArrayList<Integer>();
-  private ArrayList<ArrayList<Character>> pizza = new ArrayList<ArrayList<Character>>();
+  private ArrayList<ArrayList<Integer>> rides = new ArrayList<ArrayList<Integer>>();
 
-  public ProblemSet( ArrayList<Integer> parameters, ArrayList<ArrayList<Character>> pizza) {
+  public ProblemSet( ArrayList<Integer> parameters, ArrayList<ArrayList<Integer>> rides) {
     this.parameters = parameters;
-    this.pizza = pizza;
+    this.rides = rides;
   }
 
-  public ArrayList<ArrayList<Character>> getPizza() {
-    return pizza;
+  public ArrayList<ArrayList<Integer>> getRides() {
+    return rides;
   }
 
   public  ArrayList<Integer> getParam() {
