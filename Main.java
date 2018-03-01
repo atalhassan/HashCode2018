@@ -34,13 +34,14 @@ public class Main {
     for (ArrayList<Integer> row : rides){
         System.out.println(row);
     }
+     ArrayList<ArrayList<Ride>> answer = s.start();
     // System.out.println("There should be at least " + () + " slices");
 
     // Start finding slices
-    // writeFile("example.out");
+    writeFile("example.out",answer);
   }
 
-  public static void writeFile(String filename, ArrayLists<ArrayLists<Ride>> rides) {
+  public static void writeFile(String filename, ArrayList<ArrayList<Ride>> rides) {
 
     try {
            //Whatever the file path is.
@@ -49,7 +50,7 @@ public class Main {
            BufferedWriter bf = new BufferedWriter(fl);
            PrintWriter output = new PrintWriter(bf);
            for(int row = 0; row < rides.size(); row++){
-             output.println(row + ' ' + rides.get(row));
+             output.println(row + " " + rides.get(row));
            }
            output.close();
        } catch (IOException e) {
